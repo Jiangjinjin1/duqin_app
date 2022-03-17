@@ -13,7 +13,9 @@ class SongSubPage extends StatefulWidget {
 }
 
 class _SongSubPageState extends State<SongSubPage> with AutomaticKeepAliveClientMixin {
+  // 下拉刷新控制器
   EasyRefreshController _easyRefreshController = EasyRefreshController();
+  // 独立的滚动视图 防止tab切换时触发下拉刷新 混入AutomaticKeepAliveClientMixin 重写wantKeepAlive方法
   ScrollController _scrollController = ScrollController();
 
   List<SongItem> _songList = SongList([]).list;

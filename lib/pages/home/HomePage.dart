@@ -1,9 +1,10 @@
+import 'package:duqin_app/utils/ColorUtil.dart';
 import 'package:flutter/material.dart';
-import '../../utils/ColorUtil.dart';
 import 'IndexPage.dart';
 import 'MusicPage.dart';
 import 'VideoPage.dart';
 import 'MyProfilePage.dart';
+import 'package:proste_indexed_stack/proste_indexed_stack.dart';
 
 class HomePage extends StatefulWidget {
   Map? arguments;
@@ -16,12 +17,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Map? arguments;
   int _currentIndex = 0;
-  List _pageList = [
-    IndexPage(),
-    MusicPage(),
-    null,
-    VideoPage(),
-    MyProfilePage()
+  //IndexedStackChild 懒加载包裹，底部tab切换时缓存tab状态,不重复请求接口
+  final List<IndexedStackChild> _pageList = [
+    IndexedStackChild(child: IndexPage()),
+    IndexedStackChild(child: MusicPage()),
+    IndexedStackChild(child: Text('')),
+    IndexedStackChild(child: VideoPage()),
+    IndexedStackChild(child: MyProfilePage()),
   ];
 
   _HomePageState({this.arguments});
@@ -48,7 +50,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _pageList[_currentIndex],
+      body: ProsteIndexedStack(
+        index: _currentIndex,
+        children: _pageList,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: _onTap,
         currentIndex: _currentIndex,
