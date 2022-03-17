@@ -1,5 +1,14 @@
 import 'package:duqin_app/components/PreferredTabBar.dart';
 import 'package:duqin_app/components/RootPageHead.dart';
+import 'package:duqin_app/pages/home/sub_pages/ArticleSubPage.dart';
+import 'package:duqin_app/pages/home/sub_pages/ListenToStorySubPage.dart';
+import 'package:duqin_app/pages/home/sub_pages/LitVideoSubPage.dart';
+import 'package:duqin_app/pages/home/sub_pages/RecommendSubPage.dart';
+import 'package:duqin_app/pages/home/sub_pages/SongSubPage.dart';
+import 'package:duqin_app/pages/home/sub_pages/SongerSubPage.dart';
+import 'package:duqin_app/pages/home/sub_pages/TopicsSubPage.dart';
+import 'package:duqin_app/pages/home/sub_pages/VideoSubPage.dart';
+import 'package:duqin_app/pages/home/sub_pages/WeiDuSubPage.dart';
 import 'package:flutter/material.dart';
 
 
@@ -14,6 +23,19 @@ const List<Widget> _tabs = [
   const Tab(text: '文章'),
   const Tab(text: '视频'),
   const Tab(text: '话题'),
+];
+
+// subPage
+const List<Widget> _subPages = [
+  WeiDuSubPage(),
+  RecommendSubPage(),
+  SongSubPage(),
+  SongerSubPage(),
+  LitVideoSubPage(),
+  ListenToStorySubPage(),
+  ArticleSubPage(),
+  VideoSubPage(),
+  TopicsSubPage(),
 ];
 
 class IndexPage extends StatefulWidget {
@@ -59,89 +81,7 @@ class _IndexPageState extends State<IndexPage> with SingleTickerProviderStateMix
       ),
       body: TabBarView(
         controller: _tabController,
-        children: [
-          ListView(
-            children: [
-              ListTile(
-                title: Text('第一个tab'),
-              ),
-              ListTile(
-                title: Text('第一个tab'),
-              ),
-              ListTile(
-                title: Text('第一个tab'),
-              ),
-              ListTile(
-                title: Text('第一个tab'),
-              ),
-            ],
-          ),
-          ListView(
-            children: [
-              ListTile(
-                title: Text('第二个tab'),
-              ),
-              ListTile(
-                title: Text('第二个tab'),
-              ),
-              ListTile(
-                title: Text('第二个tab'),
-              ),
-              ListTile(
-                title: Text('第二个tab'),
-              ),
-            ],
-          ),
-          ListView(
-            children: [
-              ListTile(
-                title: Text('第三个tab'),
-              ),
-            ],
-          ),
-          ListView(
-            children: [
-              ListTile(
-                title: Text('第四个tab'),
-              ),
-            ],
-          ),
-          ListView(
-            children: [
-              ListTile(
-                title: Text('第五个tab'),
-              ),
-            ],
-          ),
-          ListView(
-            children: [
-              ListTile(
-                title: Text('第六个tab'),
-              ),
-            ],
-          ),
-          ListView(
-            children: [
-              ListTile(
-                title: Text('第七个tab'),
-              ),
-            ],
-          ),
-          ListView(
-            children: [
-              ListTile(
-                title: Text('第八个tab'),
-              ),
-            ],
-          ),
-          ListView(
-            children: [
-              ListTile(
-                title: Text('第九个tab'),
-              ),
-            ],
-          )
-        ],
+        children: _subPages
       ),
     );
   }
