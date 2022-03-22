@@ -44,7 +44,7 @@ class _SongerSubPageState extends State<SongerSubPage> with AutomaticKeepAliveCl
   // 获取歌曲列表数据
   _getUserList() async{
     try {
-      Map<String, dynamic> result = await Services.getUserList(page: page, pageSize: pageSize, type: userTypeEnum['DQ_SINGER']['code']);
+      Map<String, dynamic> result = await Services.getUserList(page: page, pageSize: pageSize, type: UserType.typeEn['DQ_SINGER']);
       UserList UserListModel = UserList.fromJson(result['data']);
 
       setState(() {
@@ -120,6 +120,7 @@ class _SongerSubPageState extends State<SongerSubPage> with AutomaticKeepAliveCl
           crossAxisCount: 2,
           crossAxisSpacing: 1,
           mainAxisSpacing: 8,
+          // mainAxisExtent: MediaQuery.of(context).size.width / 1.55,
           mainAxisExtent: MediaQuery.of(context).size.width / 1.55,
         ),
         itemBuilder: (context, index) {

@@ -24,4 +24,15 @@ class Services {
     return result;
   }
 
+  // 视频接口
+  static Future getVideoList({int? page = 1, int? pageSize = 20 }) async {
+    const String path = '/api/video/getVideoList';
+    final response = await Http.post(
+      path,
+      data: {'pageSize': pageSize, 'page': page},
+    );
+    Map<String, dynamic> result = response['data'];
+    return result;
+  }
+
 }
